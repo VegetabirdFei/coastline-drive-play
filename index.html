@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Coastline Drive</title>
   <link rel="icon" href="./favicon.ico" />
-  <script type="module" crossorigin src="./assets/index-_r65DQcH.js"></script>
+  <script type="module" crossorigin src="./assets/index-B5Nks-sz.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-DnluxEz-.css">
 </head>
 <body>
@@ -61,6 +61,8 @@
   </div>
   <div id="speedo"><div class="mph" id="mph">0</div><div class="label">MPH · AUTO</div></div>
   <div id="toast"></div>
+  <div id="debugHud" style="display:none;position:absolute;left:8px;bottom:64px;z-index:30;font:11px monospace;background:rgba(0,0,0,.6);color:#9fe;padding:4px 8px;border-radius:6px;pointer-events:none"></div>
+  <div id="osmCredit" style="position:absolute;right:6px;bottom:4px;z-index:5;font:10px sans-serif;color:rgba(255,255,255,.7);text-shadow:0 1px 2px #000;pointer-events:none">© OpenStreetMap contributors</div>
 
   <!-- Main menu -->
   <div id="menu" class="overlay open">
@@ -71,6 +73,7 @@
         <button type="button" class="good" id="btnNewGame" data-i18n="newGame">New Game</button>
         <button type="button" id="btnContinue" data-i18n="continue">Continue</button>
         <button type="button" class="secondary" id="btnSettingsMenu" data-i18n="settings">Settings</button>
+        <button type="button" class="secondary" id="btnCredits">Credits</button>
       </div>
       <p class="meta" style="margin-top:14px" data-i18n="disclaimer">Fan-made sim. Not affiliated with any rideshare brand.</p>
     </div>
@@ -96,8 +99,9 @@
       <div class="field"><label data-i18n="musicVol">Music</label><input id="volMusic" class="slider" type="range" min="0" max="100" value="45" /></div>
       <div class="field"><label data-i18n="sfxVol">SFX</label><input id="volSfx" class="slider" type="range" min="0" max="100" value="80" /></div>
       <div class="field"><label data-i18n="graphics">Graphics</label>
-        <select id="gfxQuality"><option value="low">Low</option><option value="med" selected>Medium</option><option value="high">High</option></select>
+        <select id="gfxQuality"><option value="low">Low (phones)</option><option value="med" selected>Medium</option><option value="high">High</option></select>
       </div>
+      <div class="field"><label><input type="checkbox" id="debugOverlay" /> Debug overlay (lanes · road envelopes · prop footprints) — key O</label></div>
       <div class="field"><label data-i18n="language">Language</label>
         <select id="langSelect"><option value="en">English</option><option value="zh">简体中文</option></select>
       </div>
@@ -117,7 +121,13 @@
     <div class="panel wide" style="padding:0;overflow:hidden;display:flex;flex-direction:column">
       <header style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)">
         <h2 style="font-size:15px" data-i18n="navTitle">Navigation — pick a route</h2>
-        <button type="button" class="secondary" id="btnCloseNav" data-i18n="close">Close</button>
+        <span style="display:flex;gap:6px">
+          <button type="button" class="secondary" id="btnNavRoute" title="Fit route">⤢</button>
+          <button type="button" class="secondary" id="btnNavAll" title="Whole map">🗺</button>
+          <button type="button" class="secondary" id="btnNavZoomIn">＋</button>
+          <button type="button" class="secondary" id="btnNavZoomOut">－</button>
+          <button type="button" class="secondary" id="btnCloseNav" data-i18n="close">Close</button>
+        </span>
       </header>
       <div class="nav-grid">
         <div id="navCanvasWrap"><canvas id="navCanvas"></canvas></div>
@@ -135,6 +145,17 @@
     </div>
   </div>
 
+  <!-- Credits -->
+  <div id="creditsModal" class="overlay"><div class="panel">
+    <h1 class="title" style="font-size:20px">Credits</h1>
+    <p class="sub">Map: Downtown Los Angeles · Arts District · LA River · Boyle Heights.</p>
+    <p>Street network, river channel, parks, fountains, rail and building footprints are derived from
+      <b>© OpenStreetMap contributors</b>, available under the
+      <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener">Open Database License (ODbL) 1.0</a>.
+      See <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">openstreetmap.org/copyright</a>.</p>
+    <p class="meta">Landmarks are stylised generic massing — no logos or trademarks. Rendering: three.js (MIT). Fan-made; not affiliated with any rideshare brand or the City of Los Angeles.</p>
+    <div class="btns"><button type="button" class="good" id="btnCreditsClose">Close</button></div>
+  </div></div>
   <!-- Garage -->
   <div id="garageModal" class="overlay"><div class="panel" id="garagePanel"></div></div>
   <!-- Fleet -->

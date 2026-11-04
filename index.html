@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Coastline Drive</title>
+  <link rel="icon" href="./favicon.ico" />
+  <script type="module" crossorigin src="./assets/index-_r65DQcH.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DnluxEz-.css">
+</head>
+<body>
+<div id="app">
+  <div id="view"></div>
+  <div id="load"><p id="loadText">Loading Coastline Drive…</p><div class="bar"><i id="loadBar"></i></div><p class="meta" id="loadSub">Three.js · WebGL</p></div>
+
+  <div id="topbar">
+    <div class="stat"><b data-i18n="brand">Coastline Drive</b></div>
+    <div class="stat" data-i18n-cash>Cash <b id="cash">$120</b></div>
+    <div class="stat">Lv <b id="level">1</b></div>
+    <div class="stat">★ <b id="rating">5.00</b></div>
+    <div class="stat">🚗 <b id="carName">Halo Hatch</b></div>
+    <div class="stat">HP <b id="hp">100</b></div>
+    <div class="stat" id="clockStat">Day <b id="clock">08:00</b></div>
+    <div class="actions">
+      <button type="button" class="secondary tip" id="btnPause" data-tip="Pause" data-i18n="pause">Pause</button>
+      <button type="button" class="secondary" id="btnFleetTop" data-i18n="fleet">Fleet</button>
+    </div>
+  </div>
+
+  <div id="tutorialBanner" class="card"></div>
+
+  <div id="hud">
+    <div class="flex">
+      <div id="offerCard" class="card" style="display:none"></div>
+      <div id="sideCard" class="card">
+        <h2 data-i18n="dispatch">Dispatch</h2>
+        <p id="statusText">Go online to receive rides.</p>
+        <div class="btns">
+          <button type="button" id="btnOnline" class="good tip" data-tip="Toggle online status" data-i18n="goOnline">Go Online</button>
+          <button type="button" id="btnGarage" class="secondary tip" data-tip="Upgrade & buy cars" data-i18n="garage">Garage</button>
+          <button type="button" id="btnNav" class="secondary" disabled data-i18n="openNav">Open Nav</button>
+          <button type="button" id="btnGoals" class="secondary" data-i18n="goals">Goals</button>
+        </div>
+        <div class="meta" id="dailyHint"></div>
+        <div id="needsHud" class="needs-hud">
+          <div class="need-row"><span>F</span><div class="need-track"><i id="barFatigue"></i></div></div>
+          <div class="need-row"><span>H</span><div class="need-track"><i id="barHunger"></i></div></div>
+          <div class="need-row"><span>M</span><div class="need-track"><i id="barMood"></i></div></div>
+          <p class="meta" id="needsLabel">Needs</p>
+          <div class="btns" style="margin-top:6px">
+            <button type="button" class="secondary" id="btnCoffee" data-i18n="coffee">Coffee $4</button>
+            <button type="button" class="secondary" id="btnFood" data-i18n="food">Food $9</button>
+            <button type="button" class="secondary" id="btnRest" data-i18n="rest">Rest</button>
+            <button type="button" class="secondary" id="btnHousing" data-i18n="housing">Housing</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="dialogue" class="card"></div>
+    <div class="flex" style="justify-content:flex-start"><div id="tripCard" class="card" style="display:none;max-width:280px"></div></div>
+  </div>
+  <div id="speedo"><div class="mph" id="mph">0</div><div class="label">MPH · AUTO</div></div>
+  <div id="toast"></div>
+
+  <!-- Main menu -->
+  <div id="menu" class="overlay open">
+    <div class="panel">
+      <h1 class="title">Coastline <span>Drive</span></h1>
+      <p class="sub" data-i18n="tagline">LA rideshare management — plan routes, the car drives itself.</p>
+      <div class="row-btns">
+        <button type="button" class="good" id="btnNewGame" data-i18n="newGame">New Game</button>
+        <button type="button" id="btnContinue" data-i18n="continue">Continue</button>
+        <button type="button" class="secondary" id="btnSettingsMenu" data-i18n="settings">Settings</button>
+      </div>
+      <p class="meta" style="margin-top:14px" data-i18n="disclaimer">Fan-made sim. Not affiliated with any rideshare brand.</p>
+    </div>
+  </div>
+
+  <!-- Pause -->
+  <div id="pause" class="overlay">
+    <div class="panel">
+      <h1 class="title" style="font-size:22px" data-i18n="paused">Paused</h1>
+      <div class="row-btns">
+        <button type="button" class="good" id="btnResume" data-i18n="resume">Resume</button>
+        <button type="button" class="secondary" id="btnSettingsPause" data-i18n="settings">Settings</button>
+        <button type="button" class="secondary" id="btnSaveQuit" data-i18n="saveMenu">Save & Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div id="settings" class="overlay">
+    <div class="panel">
+      <h1 class="title" style="font-size:22px" data-i18n="settings">Settings</h1>
+      <div class="field"><label data-i18n="masterVol">Master volume</label><input id="volMaster" class="slider" type="range" min="0" max="100" value="70" /></div>
+      <div class="field"><label data-i18n="musicVol">Music</label><input id="volMusic" class="slider" type="range" min="0" max="100" value="45" /></div>
+      <div class="field"><label data-i18n="sfxVol">SFX</label><input id="volSfx" class="slider" type="range" min="0" max="100" value="80" /></div>
+      <div class="field"><label data-i18n="graphics">Graphics</label>
+        <select id="gfxQuality"><option value="low">Low</option><option value="med" selected>Medium</option><option value="high">High</option></select>
+      </div>
+      <div class="field"><label data-i18n="language">Language</label>
+        <select id="langSelect"><option value="en">English</option><option value="zh">简体中文</option></select>
+      </div>
+      <div class="field"><label data-i18n="saveCode">Save code (export / import)</label>
+        <textarea id="saveCodeBox" rows="3" style="width:100%;font-size:11px;background:#0d1522;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px"></textarea>
+        <div class="btns" style="margin-top:6px">
+          <button type="button" class="secondary" id="btnExportSave" data-i18n="exportSave">Export</button>
+          <button type="button" class="warn" id="btnImportSave" data-i18n="importSave">Import</button>
+        </div>
+      </div>
+      <div class="btns"><button type="button" class="good" id="btnSettingsClose" data-i18n="done">Done</button></div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <div id="navModal" class="overlay">
+    <div class="panel wide" style="padding:0;overflow:hidden;display:flex;flex-direction:column">
+      <header style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)">
+        <h2 style="font-size:15px" data-i18n="navTitle">Navigation — pick a route</h2>
+        <button type="button" class="secondary" id="btnCloseNav" data-i18n="close">Close</button>
+      </header>
+      <div class="nav-grid">
+        <div id="navCanvasWrap"><canvas id="navCanvas"></canvas></div>
+        <div style="padding:12px;border-left:1px solid var(--line);overflow:auto">
+          <div id="routeList"></div>
+          <div class="legend">
+            <span><i class="swatch" style="background:#3dcf8e"></i><span data-i18n="clear">Clear</span></span>
+            <span><i class="swatch" style="background:#f0c14a"></i><span data-i18n="slow">Slow</span></span>
+            <span><i class="swatch" style="background:#ff6b6b"></i><span data-i18n="jam">Jam</span></span>
+          </div>
+          <p class="meta">⚠ accident · 🛡 checkpoint · 🚧 works · ◆ hazard · 🌧️ flood · 🎉 event crowd</p>
+          <div class="btns"><button type="button" class="good" id="btnConfirmRoute" disabled data-i18n="confirmDrive">Confirm & Drive</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Garage -->
+  <div id="garageModal" class="overlay"><div class="panel" id="garagePanel"></div></div>
+  <!-- Fleet -->
+  <div id="fleetModal" class="overlay"><div class="panel" id="fleetPanel"></div></div>
+  <!-- Goals -->
+  <div id="goalsModal" class="overlay"><div class="panel" id="goalsPanel"></div></div>
+  <!-- Settlement -->
+  <div id="settleModal" class="overlay"><div class="panel" id="settlePanel"></div></div>
+  <!-- Housing / life -->
+  <div id="lifeModal" class="overlay"><div class="panel" id="lifePanel"></div></div>
+</div>
+</body>
+</html>

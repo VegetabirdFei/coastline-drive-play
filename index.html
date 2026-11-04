@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Coastline Drive</title>
   <link rel="icon" href="./favicon.ico" />
-  <script type="module" crossorigin src="./assets/index-CDzTZCCz.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-e8NmcqK-.css">
+  <script type="module" crossorigin src="./assets/index-CVdSYCd9.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-C4at6OFJ.css">
 </head>
 <body>
 <div id="app">
@@ -63,6 +63,22 @@
     </div>
     <div id="dialogue" class="card"></div>
     <div class="flex" style="justify-content:flex-start"><div id="tripCard" class="card" style="display:none;max-width:280px"></div></div>
+  </div>
+  <div id="driveHud" style="display:none">
+    <div id="drivePrompt" class="card drive-prompt" style="display:none"></div>
+    <div class="drive-dock">
+      <div class="drive-mood">
+        <span id="driveMoodLabel">Mood</span>
+        <div class="need-track"><i id="barPaxMood"></i></div>
+        <span id="driveScore">★0</span>
+      </div>
+      <div class="drive-row" id="driveStyles"></div>
+      <div class="drive-row" id="driveCabin"></div>
+      <div class="drive-row">
+        <button type="button" class="secondary drive-tap" id="btnDriveFF">FF ×1</button>
+        <button type="button" class="secondary drive-tap" id="btnDriveNav">Map</button>
+      </div>
+    </div>
   </div>
   <div id="speedo"><div class="mph" id="mph">0</div><div class="label">MPH · AUTO</div></div>
   <div id="toast"></div>

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Coastline Drive</title>
   <link rel="icon" href="./favicon.ico" />
-  <script type="module" crossorigin src="./assets/index-Dp9llbk7.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Cd9KLVMe.css">
+  <script type="module" crossorigin src="./assets/index-CDzTZCCz.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-e8NmcqK-.css">
 </head>
 <body>
 <div id="app">
@@ -46,12 +46,17 @@
           <div class="need-row"><span>F</span><div class="need-track"><i id="barFatigue"></i></div></div>
           <div class="need-row"><span>H</span><div class="need-track"><i id="barHunger"></i></div></div>
           <div class="need-row"><span>M</span><div class="need-track"><i id="barMood"></i></div></div>
+          <div class="need-row"><span>⛽</span><div class="need-track"><i id="barFuel"></i></div></div>
           <p class="meta" id="needsLabel">Needs</p>
+          <p class="meta" id="shiftLabel">Shift: Flex</p>
           <div class="btns" style="margin-top:6px">
             <button type="button" class="secondary" id="btnCoffee" data-i18n="coffee">Coffee $4</button>
             <button type="button" class="secondary" id="btnFood" data-i18n="food">Food $9</button>
             <button type="button" class="secondary" id="btnRest" data-i18n="rest">Rest</button>
             <button type="button" class="secondary" id="btnHousing" data-i18n="housing">Housing</button>
+            <button type="button" class="secondary" id="btnFuel">Refuel $18</button>
+            <button type="button" class="secondary" id="btnShift">Shift</button>
+            <button type="button" class="secondary" id="btnBuild">Build</button>
           </div>
         </div>
       </div>
@@ -83,11 +88,15 @@
   <div id="pause" class="overlay">
     <div class="panel">
       <h1 class="title" style="font-size:22px" data-i18n="paused">Paused</h1>
+      <p class="sub" id="pauseSummary">Shift · Fuel · Week</p>
       <div class="row-btns">
         <button type="button" class="good" id="btnResume" data-i18n="resume">Resume</button>
+        <button type="button" class="secondary" id="btnPauseGoals">Goals / Week</button>
+        <button type="button" class="secondary" id="btnPauseShift">Change shift</button>
         <button type="button" class="secondary" id="btnSettingsPause" data-i18n="settings">Settings</button>
         <button type="button" class="secondary" id="btnSaveQuit" data-i18n="saveMenu">Save & Main Menu</button>
       </div>
+      <p class="meta" style="margin-top:10px">Esc closes overlays in order: menus → pause. Events must be chosen.</p>
     </div>
   </div>
 
@@ -168,6 +177,9 @@
   <div id="lifeModal" class="overlay"><div class="panel" id="lifePanel"></div></div>
   <!-- Random event choice -->
   <div id="eventModal" class="overlay"><div class="panel" id="eventPanel"></div></div>
+  <div id="weekModal" class="overlay"><div class="panel" id="weekPanel"></div></div>
+  <div id="shiftModal" class="overlay"><div class="panel" id="shiftPanel"></div></div>
+  <div id="buildModal" class="overlay"><div class="panel" id="buildPanel"></div></div>
 </div>
 </body>
 </html>

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Coastline Drive</title>
   <link rel="icon" href="./favicon.ico" />
-  <script type="module" crossorigin src="./assets/index-CVdSYCd9.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-C4at6OFJ.css">
+  <script type="module" crossorigin src="./assets/index-B5Q8o_sh.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Y9QslJdj.css">
 </head>
 <body>
 <div id="app">
@@ -39,7 +39,7 @@
           <button type="button" id="btnOnline" class="good tip" data-tip="Toggle online status" data-i18n="goOnline">Go Online</button>
           <button type="button" id="btnGarage" class="secondary tip" data-tip="Upgrade & buy cars" data-i18n="garage">Garage</button>
           <button type="button" id="btnNav" class="secondary" disabled data-i18n="openNav">Open Nav</button>
-          <button type="button" id="btnGoals" class="secondary" data-i18n="goals">Goals</button>
+          <button type="button" class="secondary tip" id="btnNotebook">Notes</button><button type="button" class="secondary tip" id="btnGoals" data-i18n="goals">Goals</button>
         </div>
         <div class="meta" id="dailyHint"></div>
         <div id="needsHud" class="needs-hud">
@@ -64,9 +64,12 @@
     <div id="dialogue" class="card"></div>
     <div class="flex" style="justify-content:flex-start"><div id="tripCard" class="card" style="display:none;max-width:280px"></div></div>
   </div>
+  <div id="lookDock" class="look-dock" style="display:none"></div>
+  <div id="paxCard" class="card pax-card" style="display:none"></div>
   <div id="driveHud" style="display:none">
     <div id="drivePrompt" class="card drive-prompt" style="display:none"></div>
     <div class="drive-dock">
+      <p class="drive-hint" id="driveHint">Tap car controls · Q/E/R/F look</p>
       <div class="drive-mood">
         <span id="driveMoodLabel">Mood</span>
         <div class="need-track"><i id="barPaxMood"></i></div>
@@ -81,6 +84,9 @@
     </div>
   </div>
   <div id="speedo"><div class="mph" id="mph">0</div><div class="label">MPH · AUTO</div></div>
+  <div id="notebookModal" class="overlay">
+    <div class="panel" id="notebookPanel"></div>
+  </div>
   <div id="toast"></div>
   <div id="debugHud" style="display:none;position:absolute;left:8px;bottom:64px;z-index:30;font:11px monospace;background:rgba(0,0,0,.6);color:#9fe;padding:4px 8px;border-radius:6px;pointer-events:none"></div>
   <div id="osmCredit" style="position:absolute;right:6px;bottom:4px;z-index:5;font:10px sans-serif;color:rgba(255,255,255,.7);text-shadow:0 1px 2px #000;pointer-events:none">© OpenStreetMap contributors</div>

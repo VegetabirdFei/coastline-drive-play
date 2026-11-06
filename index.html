@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Coastline Drive</title>
   <link rel="icon" href="./favicon.ico" />
-  <script type="module" crossorigin src="./assets/index-Cca-ruw3.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BDkYD5Bm.css">
+  <script type="module" crossorigin src="./assets/index-C3281EiP.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DFXfriXJ.css">
 </head>
 <body>
 <div id="app">
@@ -69,23 +69,34 @@
   <div id="driveHud" style="display:none">
     <div id="drivePrompt" class="card drive-prompt" style="display:none"></div>
     <div class="drive-dock">
-      <p class="drive-hint" id="driveHint">Tap car controls · Q/E/R/F look</p>
-      <div class="drive-mood">
-        <span id="driveMoodLabel">Mood</span>
-        <div class="need-track"><i id="barPaxMood"></i></div>
-        <span id="driveScore">★0</span>
+      <div class="drive-dock-header">
+        <button type="button" class="drive-tab-btn" id="btnDriveTabMin">▼</button>
+        <div class="drive-mood-compact">
+          <span id="driveMoodLabel">Mood</span>
+          <div class="need-track"><i id="barPaxMood"></i></div>
+          <span id="driveScore">★0</span>
+        </div>
+        <button type="button" class="drive-tab-btn" id="btnDriveTabControls">Controls</button>
+        <button type="button" class="drive-tab-btn" id="btnDriveTabInfo">Info</button>
       </div>
-      <div class="drive-row" id="driveStyles"></div>
-      <div class="drive-row" id="driveCabin"></div>
-      <div class="drive-row cabin-fallback" id="cabinFallback">
-        <button type="button" class="secondary drive-tap" data-fb="radio">Radio</button>
-        <button type="button" class="secondary drive-tap" data-fb="ac">A/C</button>
-        <button type="button" class="secondary drive-tap" data-fb="window">Window</button>
-        <button type="button" class="secondary drive-tap" data-fb="talk">Talk</button>
-      </div>
-      <div class="drive-row">
-        <button type="button" class="secondary drive-tap" id="btnDriveFF">FF ×1</button>
-        <button type="button" class="secondary drive-tap" id="btnDriveNav">Map</button>
+      <div class="drive-dock-body" id="driveDockBody">
+        <div class="drive-tab-content" id="driveTabControls">
+          <p class="drive-hint" id="driveHint">Tap car controls · Q/E/R/F look</p>
+          <div class="drive-row" id="driveStyles"></div>
+          <div class="drive-row" id="driveCabin"></div>
+          <div class="drive-row cabin-fallback" id="cabinFallback">
+            <button type="button" class="secondary drive-tap" data-fb="radio">Radio</button>
+            <button type="button" class="secondary drive-tap" data-fb="ac">A/C</button>
+            <button type="button" class="secondary drive-tap" data-fb="window">Window</button>
+            <button type="button" class="secondary drive-tap" data-fb="talk">Talk</button>
+          </div>
+        </div>
+        <div class="drive-tab-content" id="driveTabInfo" style="display:none">
+          <div class="drive-row">
+            <button type="button" class="secondary drive-tap" id="btnDriveFF">FF ×1</button>
+            <button type="button" class="secondary drive-tap" id="btnDriveNav">Map</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

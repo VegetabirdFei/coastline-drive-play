@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Coastline Drive</title>
   <link rel="icon" href="./favicon.ico" />
-  <script type="module" crossorigin src="./assets/index-C3281EiP.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DFXfriXJ.css">
+  <script type="module" crossorigin src="./assets/index-BY93gNbm.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-C9uY2vLU.css">
 </head>
 <body>
 <div id="app">
@@ -42,11 +42,15 @@
           <button type="button" class="secondary tip" id="btnNotebook">Notes</button><button type="button" class="secondary tip" id="btnGoals" data-i18n="goals">Goals</button>
         </div>
         <div class="meta" id="dailyHint"></div>
+        <div class="meta" id="districtRep" style="display:none;margin-top:6px;padding:6px 8px;background:rgba(60,120,200,0.15);border-radius:6px">
+          <span style="font-size:11px;opacity:0.8">District Rep</span><br/>
+          <span id="districtRepText" style="font-size:13px;font-weight:600"></span>
+        </div>
         <div id="needsHud" class="needs-hud">
           <div class="need-row"><span>F</span><div class="need-track"><i id="barFatigue"></i></div></div>
           <div class="need-row"><span>H</span><div class="need-track"><i id="barHunger"></i></div></div>
           <div class="need-row"><span>M</span><div class="need-track"><i id="barMood"></i></div></div>
-          <div class="need-row"><span>⛽</span><div class="need-track"><i id="barFuel"></i></div></div>
+          <div class="need-row"><span>⛽</span><div class="need-track"><i id="barFuel"></i></div><span id="fuelRate" style="font-size:10px;opacity:0.7;margin-left:4px"></span></div>
           <p class="meta" id="needsLabel">Needs</p>
           <p class="meta" id="shiftLabel">Shift: Flex</p>
           <div class="btns" style="margin-top:6px">
@@ -93,9 +97,11 @@
         </div>
         <div class="drive-tab-content" id="driveTabInfo" style="display:none">
           <div class="drive-row">
-            <button type="button" class="secondary drive-tap" id="btnDriveFF">FF ×1</button>
+            <button type="button" class="good drive-tap" id="btnDriveFF" style="font-size:14px;font-weight:600">FF ×1</button>
             <button type="button" class="secondary drive-tap" id="btnDriveNav">Map</button>
           </div>
+          <p id="driveStyleInfo" style="font-size:11px;margin:8px 0 0;opacity:0.8;padding:6px 8px;background:rgba(255,255,255,0.05);border-radius:4px"></p>
+          <p id="paxTraitInfo" class="meta" style="margin-top:8px"></p>
         </div>
       </div>
     </div>

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Coastline Drive</title>
   <link rel="icon" href="./favicon.ico" />
-  <script type="module" crossorigin src="./assets/index-BY93gNbm.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-C9uY2vLU.css">
+  <script type="module" crossorigin src="./assets/index-DPb5dGaO.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-GhtP4-E8.css">
 </head>
 <body>
 <div id="app">
@@ -40,8 +40,11 @@
           <button type="button" id="btnGarage" class="secondary tip" data-tip="Upgrade & buy cars" data-i18n="garage">Garage</button>
           <button type="button" id="btnNav" class="secondary" disabled data-i18n="openNav">Open Nav</button>
           <button type="button" class="secondary tip" id="btnNotebook">Notes</button><button type="button" class="secondary tip" id="btnGoals" data-i18n="goals">Goals</button>
+          <button type="button" class="secondary" id="btnContract">Contracts</button>
+          <button type="button" class="secondary" id="btnEndShift">End shift</button>
         </div>
         <div class="meta" id="dailyHint"></div>
+        <div class="meta" id="contractHint"></div>
         <div class="meta" id="districtRep" style="display:none;margin-top:6px;padding:6px 8px;background:rgba(60,120,200,0.15);border-radius:6px">
           <span style="font-size:11px;opacity:0.8">District Rep</span><br/>
           <span id="districtRepText" style="font-size:13px;font-weight:600"></span>
@@ -224,6 +227,8 @@
   <div id="eventModal" class="overlay"><div class="panel" id="eventPanel"></div></div>
   <div id="weekModal" class="overlay"><div class="panel" id="weekPanel"></div></div>
   <div id="shiftModal" class="overlay"><div class="panel" id="shiftPanel"></div></div>
+  <div id="contractModal" class="overlay"><div class="panel" id="contractPanel"></div></div>
+  <div id="shiftSummaryModal" class="overlay"><div class="panel" id="shiftSummaryPanel"></div></div>
   <div id="buildModal" class="overlay"><div class="panel" id="buildPanel"></div></div>
 </div>
 </body>
